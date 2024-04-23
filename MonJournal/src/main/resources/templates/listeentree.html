@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<a th:href="@{/}" class="btn btn-primary">Retour page d'acceuil</a><br>
+<h1>Liste des Entrees</h1>
+<table class="table table-sprited">
+  <thead>
+    <th>ID</th>
+    <th>Titre</th>
+    <th>Contenu</th>
+    <th>Date</th>
+    <th>Nom Journal</th>
+    <th>Modifier</th>
+    <th>Supprimer</th>
+  </thead>
+  <tbody>
+    <tr th:each="p : ${listeentree}">
+       <td th:text="${e.id}"></td>
+       <td th:text="${e.titre}"></td>
+       <td th:text="${e.contenu}"></td>
+       <td th:text="${e.date}"></td>
+       <td th:text="${e.journal.nom}"></td>
+       <td><a th:href="@{/editerentree/}+${e.id}" class="btn btn-primary">Modifier</a></td>
+       <td><a th:href="@{/supprimerentree/}+${e.id}" class="btn btn-danger">Supprimer</a></td>
+    </tr>
+  
+  </tbody> 
+
+
+</table>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

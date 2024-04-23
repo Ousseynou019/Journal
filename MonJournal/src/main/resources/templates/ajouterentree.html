@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<h1>Formulaire de Saisie d'une Entrée</h1>
+
+<form th:action="@{/creerentree}" method="POST" th:object="${entree}" >
+
+<div class="form-group row">
+   <label class="col-sm-2">Titre</label>
+   <div class="col-sm-6">
+   <input type="text" th:field="*{titre}">
+   <small class="alert alert-danger" th:if="${#fields.hasErrors('titre')}" th:errors="*{titre}"></small>
+   </div> 
+</div>
+
+<div class="form-group row">
+   <label class="col-sm-2">Contenu</label>
+   <div class="col-sm-6">
+   <input type="text" th:field="*{contenu}">
+   <small class="alert alert-danger" th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}"></small>
+   </div> 
+</div>
+
+<select th:field="*{codejour}">
+<option value="">Sélectionnez un Journal></option>
+<option th:each="j: ${listejournal}" th:value="${j.number}" th:text="${j.number}"></option>
+</select>
+
+
+
+<div class="col-sm-4">
+
+   <input type="submit" value="Enregistrer" class="btn btn-primary">
+</div>
+
+
+</form>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
